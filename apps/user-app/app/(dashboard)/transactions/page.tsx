@@ -1,7 +1,6 @@
 // pages/your-page.tsx (or your actual file path)
 import { getServerSession } from "next-auth";
 import { TransactionsCard } from "../../../components/TransactionsCard";
-import { Center } from "@repo/ui/center";
 import { authOptions } from "../../lib/auth";
 import prisma from "@repo/db/client";
 import { BalanceCard } from "../../../components/BalanceCard";
