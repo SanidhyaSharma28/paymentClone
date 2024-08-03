@@ -1,12 +1,23 @@
-import { getServerSession } from "next-auth";
-import { redirect } from 'next/navigation'
-import { authOptions } from "./lib/auth";
+"use client";
 
-export default async function Page() {
-  const session = await getServerSession(authOptions);
-  if (session?.user) {
-    redirect('/dashboard')
+import { useRouter } from "next/navigation";
+
+import { Home } from "../components/Home";
+
+import { useSession } from "next-auth/react";
+
+export default function Page() {
+  const session = useSession();
+
+  const router = useRouter();
+
+  if (!session.data) {
+    return (
+      <>
+        <Home />
+      </>
+    );
   } else {
-    redirect('/api/auth/signin')
+    router.push("/transfer");
   }
 }
