@@ -1,4 +1,4 @@
-name: Build and Deploy to Docker Hub and checking if key correct
+name: Build and Deploy to Docker Hub and checking if key correction
 
 on:
   push:
