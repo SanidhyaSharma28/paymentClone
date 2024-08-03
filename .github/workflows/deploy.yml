@@ -39,7 +39,7 @@ jobs:
           
           sudo docker pull sani28sharma/payment-deploy:latest
           
-          # Stop and remove existing container if exists a
+          # Stop and remove existing container if exist
           sudo docker stop web-app || true
           sudo docker rm web-app || true
     
