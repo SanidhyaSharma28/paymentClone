@@ -44,6 +44,6 @@ jobs:
           sudo docker rm web-app || true
     
           # Run the container with the DATABASE_URL environment variable
-          sudo docker run -d --name web-app -p 3005:3000 \
+          sudo docker run -d --name web-app -p 3005:3001 \
             -e DATABASE_URL=${{ secrets.DB_URL }} \
             sani28sharma/payment-deploy:latest
