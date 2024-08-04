@@ -31,7 +31,7 @@ async function getOnRampTransactions() {
     const txns = await prisma.onRampTransaction.findMany({
         where: { userId: Number(session.user.id) }
     });
-    return txns.map(t:any => ({
+    return txns.map((t:any => ({
         time: t.startTime,
         amount: t.amount,
         status: t.status,
@@ -46,7 +46,7 @@ async function getSentP2P() {
     const txns = await prisma.p2pTransfer.findMany({
         where: { fromUserId: Number(session.user.id) }
     });
-    return txns.map(t:any => ({
+    return txns.map((t:any) => ({
         time: t.timestamp,
         amount: t.amount,
         to:t.toUserId
@@ -60,7 +60,7 @@ async function getReceivedP2P() {
     const txns = await prisma.p2pTransfer.findMany({
         where: { toUserId: Number(session.user.id) }
     });
-    return txns.map(t:any => ({
+    return txns.map((t:any) => ({
         time: t.timestamp,
         amount: t.amount,
         from:t.fromUserId
