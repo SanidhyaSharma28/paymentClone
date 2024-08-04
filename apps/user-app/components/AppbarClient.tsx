@@ -9,12 +9,11 @@ export function AppbarClient() {
 
   return (
    <div>
-      <Appbar onSignin={async ()=>{
-        await signIn()
-        window.location.href = "http://localhost:3001/signin";
-      }} onSignout={async () => {
+      <Appbar onSignin={()=>router.push("/signin")}  onSignout={async () => {
         await signOut()
-        window.location.href = "http://localhost:3001/";
+        router.push("/")
+     
+       
       }} user={session.data?.user} />
    </div>
   );

@@ -4,6 +4,7 @@ import { TransactionsCard } from "../../../components/TransactionsCard";
 import { authOptions } from "../../lib/auth";
 import prisma from "@repo/db/client";
 import { BalanceCard } from "../../../components/BalanceCard";
+import { redirect } from "next/navigation";
 
 // Fetch balance data
 async function getBalance() {
@@ -68,6 +69,11 @@ async function getReceivedP2P() {
 
 // Default export function for the page
 export default async function Page() {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      redirect("/signin");
+    }
     const balance = await getBalance();
     const transactions = await getOnRampTransactions();
     const receivedP2P = await getReceivedP2P();
