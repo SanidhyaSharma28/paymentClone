@@ -44,8 +44,5 @@ jobs:
           sudo docker rm web-app || true
     
           # Run the container with the DATABASE_URL environment variable
-          sudo docker run -d --name web-app -p 3005:3000 \
-            -e DATABASE_URL=${DATABASE_URL} \
-            -e JWT_SECRET=${JWT_SECRET} \
-            sani28sharma/payment-deploy:latest
+          sudo docker run -d --name web-app -p 3005:3000 -e DATABASE_URL=${{secrets.DATABASE_URL}} -e JWT_SECRET={{secrets.JWT_SECRET}} sani28sharma/payment-deploy:latest
 
