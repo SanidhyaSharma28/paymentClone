@@ -37,11 +37,13 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
           
-          sudo docker pull sani28sharma/payment-deploy:latest
           
           # Stop and remove existing container if exist
           sudo docker stop web-app || true
           sudo docker rm web-app || true
+
+          sudo docker pull sani28sharma/payment-deploy:latest
+          
     
           # Run the container with the DATABASE_URL environment variable
           sudo docker run -d --name web-app -p 3005:3000 -e DATABASE_URL=${{secrets.DATABASE_URL}} -e JWT_SECRET={{secrets.JWT_SECRET}} sani28sharma/payment-deploy:latest
